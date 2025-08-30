@@ -1,0 +1,62 @@
+{
+  "name": "DrillSession",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the drill session"
+    },
+    "drill_type": {
+      "type": "string",
+      "enum": [
+        "fire_evacuation",
+        "earthquake_drill",
+        "flood_response",
+        "lockdown",
+        "general"
+      ],
+      "description": "Type of emergency drill"
+    },
+    "school_name": {
+      "type": "string",
+      "description": "School conducting the drill"
+    },
+    "scheduled_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the drill is scheduled"
+    },
+    "duration_minutes": {
+      "type": "number",
+      "description": "Expected duration of the drill"
+    },
+    "instructions": {
+      "type": "string",
+      "description": "Step-by-step instructions for the drill"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "in_progress",
+        "completed",
+        "cancelled"
+      ],
+      "default": "scheduled"
+    },
+    "participants_count": {
+      "type": "number",
+      "default": 0
+    },
+    "conducted_by": {
+      "type": "string",
+      "description": "User ID of the person conducting the drill"
+    }
+  },
+  "required": [
+    "title",
+    "drill_type",
+    "school_name",
+    "scheduled_date"
+  ]
+}

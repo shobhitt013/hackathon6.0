@@ -1,0 +1,56 @@
+{
+  "name": "Badge",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the badge"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of what earns this badge"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Icon name for the badge"
+    },
+    "color": {
+      "type": "string",
+      "description": "Color scheme for the badge"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "learning",
+        "drill",
+        "quiz",
+        "special",
+        "milestone"
+      ],
+      "description": "Category of achievement"
+    },
+    "points_required": {
+      "type": "number",
+      "description": "Points needed to earn this badge"
+    },
+    "requirements": {
+      "type": "object",
+      "description": "Specific requirements to earn the badge"
+    },
+    "rarity": {
+      "type": "string",
+      "enum": [
+        "common",
+        "uncommon",
+        "rare",
+        "legendary"
+      ],
+      "default": "common"
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "category"
+  ]
+}

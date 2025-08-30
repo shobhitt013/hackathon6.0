@@ -1,0 +1,73 @@
+{
+  "name": "EmergencyAlert",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Alert title"
+    },
+    "message": {
+      "type": "string",
+      "description": "Alert message content"
+    },
+    "alert_type": {
+      "type": "string",
+      "enum": [
+        "earthquake",
+        "fire",
+        "flood",
+        "cyclone",
+        "general_emergency",
+        "drill"
+      ],
+      "description": "Type of emergency alert"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "description": "Severity level of the alert"
+    },
+    "target_regions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Regions this alert applies to"
+    },
+    "target_schools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Specific schools this alert applies to"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the alert expires"
+    },
+    "sent_by": {
+      "type": "string",
+      "description": "Who sent the alert (admin user ID)"
+    },
+    "instructions": {
+      "type": "string",
+      "description": "Specific instructions for this emergency"
+    }
+  },
+  "required": [
+    "title",
+    "message",
+    "alert_type",
+    "severity"
+  ]
+}
