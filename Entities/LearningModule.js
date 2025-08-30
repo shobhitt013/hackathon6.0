@@ -6,65 +6,68 @@
       "type": "string",
       "description": "Title of the learning module"
     },
-    "disaster_type": {
+    "description": {
+      "type": "string",
+      "description": "Brief description of what the module covers"
+    },
+    "content": {
+      "type": "string",
+      "description": "Main learning content (HTML format)"
+    },
+    "category": {
       "type": "string",
       "enum": [
         "earthquake",
         "fire",
         "flood",
         "cyclone",
-        "first_aid",
-        "communication",
-        "general"
+        "general_safety",
+        "evacuation",
+        "first_aid"
       ],
-      "description": "Type of disaster this module covers"
+      "description": "Category of emergency preparedness"
     },
-    "target_age_group": {
+    "difficulty_level": {
       "type": "string",
       "enum": [
-        "K-2",
-        "3-5",
-        "6-8",
-        "9-12",
-        "college",
-        "all"
+        "beginner",
+        "intermediate",
+        "advanced"
       ],
-      "description": "Target age group for the module"
+      "default": "beginner"
     },
-    "content": {
-      "type": "string",
-      "description": "Main educational content in HTML/Markdown format"
+    "estimated_duration_minutes": {
+      "type": "number",
+      "description": "Estimated time to complete the module"
+    },
+    "points_reward": {
+      "type": "number",
+      "description": "Points awarded for completing the module"
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Module IDs that must be completed first"
     },
     "interactive_activity": {
       "type": "object",
-      "description": "Data for the interactive activity part of the module",
       "properties": {
         "type": {
           "type": "string",
           "enum": [
             "drag_and_drop_category",
-            "virtual_drill_selection",
-            "fire_extinguisher_game",
-            "pack_emergency_bag",
-            "prepare_classroom"
+            "matching",
+            "scenario_choice",
+            "timeline_ordering"
           ]
         },
         "data": {
-          "type": "object"
+          "type": "object",
+          "description": "Activity-specific data and configuration"
         }
       }
-    },
-    "duration_minutes": {
-      "type": "number",
-      "description": "Estimated completion time in minutes"
-    },
-    "points_reward": {
-      "type": "number",
-      "description": "Points awarded for completion"
-    },
-    "badge_reward": {
-      "type": "string",
-      "description": "Name of the badge awarded upon completion"
     },
     "quiz_questions": {
       "type": "array",
@@ -81,23 +84,39 @@
             }
           },
           "correct_answer": {
-            "type": "number"
+            "type": "number",
+            "description": "Index of the correct answer"
           },
           "explanation": {
-            "type": "string"
+            "type": "string",
+            "description": "Explanation for the correct answer"
           }
-        }
+        },
+        "required": ["question", "options", "correct_answer"]
       }
     },
-    "is_active": {
+    "badge_reward": {
+      "type": "string",
+      "description": "Badge ID awarded upon completion"
+    },
+    "is_published": {
       "type": "boolean",
-      "default": true
+      "default": false
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_date": {
+      "type": "string",
+      "format": "date-time"
     }
   },
   "required": [
     "title",
-    "disaster_type",
-    "target_age_group",
-    "content"
+    "description",
+    "content",
+    "category",
+    "points_reward"
   ]
 }
